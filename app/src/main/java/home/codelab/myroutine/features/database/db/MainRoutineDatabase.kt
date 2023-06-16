@@ -13,15 +13,15 @@ abstract class MainRoutineDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
-        private var INSTANCE: MainRoutineDatabase? = null
+        private var instance: MainRoutineDatabase? = null
 
         fun dbSingleExemplar(context: Context): MainRoutineDatabase {
-            return INSTANCE ?: synchronized(this) {
+            return instance ?: synchronized(this) {
                 Room.databaseBuilder(
                     context,
                     MainRoutineDatabase::class.java,
                     "main_routine_database"
-                ).build().also { INSTANCE = it }
+                 ).build().also { instance = it }
             }
         }
     }

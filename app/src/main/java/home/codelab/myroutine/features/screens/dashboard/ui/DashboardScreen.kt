@@ -8,7 +8,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
+import home.codelab.myroutine.domain.routine.DefaultRoutine
 import home.codelab.myroutine.features.screens.dashboard.ui.viewmodel.DashboardScreenViewModel
 import kotlinx.coroutines.launch
 
@@ -20,12 +22,15 @@ fun DashboardScreen(
     )
 ) {
     val scope = rememberCoroutineScope()
+    val actualRoutine = DefaultRoutine.GoneCame(LocalContext.current)
     Column {
-        Text(text = "Dashboard Screen")
+        Text(actualRoutine.that)
         FloatingActionButton(
             onClick = {
                 scope.launch {
-                    viewModel.addRoutine()
+                    viewModel.addRoutine(
+                        actualRoutine
+                    )
                 }
             }
         ) {

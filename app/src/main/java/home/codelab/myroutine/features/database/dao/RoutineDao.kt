@@ -6,25 +6,25 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import home.codelab.myroutine.features.database.entity.MainRoutineEntity
+import home.codelab.myroutine.features.database.entity.RoutineEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface MainRoutineDao {
+interface RoutineDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(routine: MainRoutineEntity)
+    suspend fun insert(routine: RoutineEntity)
 
     @Update()
-    suspend fun update(routine: MainRoutineEntity)
+    suspend fun update(routine: RoutineEntity)
 
     @Delete
-    suspend fun delete(routine: MainRoutineEntity)
+    suspend fun delete(routine: RoutineEntity)
 
     @Query(
         """
-        SELECT * FROM MainRoutineEntity 
+        SELECT * FROM RoutineEntity 
         ORDER BY id ASC    
         """
     )
-    fun all(): Flow<List<MainRoutineEntity>>
+    fun all(): Flow<List<RoutineEntity>>
 }

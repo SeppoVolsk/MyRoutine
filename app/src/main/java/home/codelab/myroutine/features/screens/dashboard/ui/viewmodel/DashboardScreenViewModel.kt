@@ -5,17 +5,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import home.codelab.myroutine.MyRoutineApplication
-import home.codelab.myroutine.features.database.entity.MainRoutineEntity
-import home.codelab.myroutine.features.database.repository.MainRoutineRepository
+import home.codelab.myroutine.domain.routine.DefaultRoutine
+import home.codelab.myroutine.features.database.repository.RoutineRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class DashboardScreenViewModel(private val mainRoutineRepository: MainRoutineRepository) :
+class DashboardScreenViewModel(private val mainRoutineRepository: RoutineRepository) :
     ViewModel() {
     var someState = MutableStateFlow(0)
         private set
 
-    suspend fun addRoutine() {
-        mainRoutineRepository.insert(MainRoutineEntity(that = "Test routine"))
+    suspend fun addRoutine(routine: DefaultRoutine) {
+        mainRoutineRepository.insert(routine)
     }
 
     companion object {

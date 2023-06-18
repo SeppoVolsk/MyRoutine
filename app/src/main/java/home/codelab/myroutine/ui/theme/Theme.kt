@@ -64,6 +64,7 @@ fun MyRoutineTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
+        shapes = leafShapes,
         typography = Typography,
         content = content
     )

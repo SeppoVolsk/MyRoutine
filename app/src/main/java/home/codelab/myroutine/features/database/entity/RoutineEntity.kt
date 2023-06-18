@@ -14,5 +14,5 @@ data class RoutineEntity(
     @ColumnInfo(name = "start")
     override val start: String = "undefined",
     @ColumnInfo(name = "end")
-    override val end: String = "in progress",
+    override val end: String? = null,
 ) : Routine

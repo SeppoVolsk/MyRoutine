@@ -2,23 +2,33 @@ package home.codelab.myroutine.features.screens.dashboard.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import home.codelab.myroutine.MyRoutineApplication
 import home.codelab.myroutine.domain.routine.DefaultRoutine
 import home.codelab.myroutine.features.database.repository.RoutineRepository
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 
-class DashboardScreenViewModel(private val mainRoutineRepository: RoutineRepository) :
+class DashboardScreenViewModel(private val routineRepository: RoutineRepository) :
     ViewModel() {
-    var someState = MutableStateFlow(0)
-        private set
+    val dashboardScreenState: StateFlow<DashboardScreenState> =
+        routineRepository.allStream().map { DashboardScreenState(it) }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
+                initialValue = DashboardScreenState()
+            )
 
     suspend fun addRoutine(routine: DefaultRoutine) {
-        mainRoutineRepository.insert(routine)
+        routineRepository.insert(routine)
     }
 
     companion object {
+        private const val TIMEOUT_MILLIS = 5_000L
         val factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application =

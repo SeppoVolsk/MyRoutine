@@ -8,8 +8,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 sealed class DefaultRoutine : Routine {
-
-
     fun toRoutineEntity() = RoutineEntity(
         that = this.that,
         start = this.start,
@@ -17,7 +15,6 @@ sealed class DefaultRoutine : Routine {
     )
 
     val now: String = SimpleDateFormat("dd/M/yyyy hh:mm:ss").format(Date())
-
 
     class GoneCame(context: Context) : DefaultRoutine() {
         override val that: String = context.getString(R.string.gone_come)

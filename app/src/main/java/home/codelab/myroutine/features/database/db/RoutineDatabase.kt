@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import home.codelab.myroutine.features.database.dao.RoutineDao
 import home.codelab.myroutine.features.database.entity.RoutineEntity
 
-@Database(entities = [RoutineEntity::class], version = 1)
+@Database(entities = [RoutineEntity::class], version = 2)
 abstract class RoutineDatabase : RoomDatabase() {
     abstract fun mainRoutineDao(): RoutineDao
 
@@ -21,7 +21,10 @@ abstract class RoutineDatabase : RoomDatabase() {
                     context,
                     RoutineDatabase::class.java,
                     "main_routine_database"
-                 ).build().also { instance = it }
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
+                    .also { instance = it }
             }
         }
     }

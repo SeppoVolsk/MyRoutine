@@ -1,7 +1,6 @@
 package home.codelab.myroutine.features.screens.dashboard.ui
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -31,18 +30,19 @@ fun DashboardScreen(
     val state by viewModel.dashboardScreenState.collectAsState()
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-    Column {
+
         LazyColumn(
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(
-                items = state.routineList,
+                items = state.routineList
             ) { routine ->
                 RoutineStateCard(routine)
             }
         }
         FloatingActionButton(
+
             shape = MaterialTheme.shapes.medium,
             onClick = {
                 scope.launch {
@@ -57,5 +57,5 @@ fun DashboardScreen(
                 contentDescription = null
             )
         }
-    }
+
 }

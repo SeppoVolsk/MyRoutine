@@ -4,8 +4,7 @@ package home.codelab.myroutine.domain.routine
 import android.content.Context
 import home.codelab.myroutine.R
 import home.codelab.myroutine.features.database.entity.RoutineEntity
-import java.text.SimpleDateFormat
-import java.util.Date
+import home.codelab.myroutine.features.timetracker.TimeTracker
 
 sealed class DefaultRoutine : Routine {
     fun toRoutineEntity() = RoutineEntity(
@@ -14,11 +13,16 @@ sealed class DefaultRoutine : Routine {
         end = this.end,
     )
 
-    val now: String = SimpleDateFormat("dd/M/yyyy hh:mm:ss").format(Date())
-
     class GoneCame(context: Context) : DefaultRoutine() {
         override val that: String = context.getString(R.string.gone_come)
-        override val start: String = now
+        override val start: String = TimeTracker.now
         override val end: String = "not finished yet"
+    }
+
+    class Undefined() : DefaultRoutine() {
+        override val that: String = "Пустая рутина не требующая контекст"
+        override val start: String = "01/01/2023 12:00:00"
+        override val end: String = "not finished yet"
+
     }
 }

@@ -5,6 +5,7 @@ import home.codelab.myroutine.domain.routine.Routine
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Timer
+import java.util.concurrent.TimeUnit
 import kotlin.concurrent.timer
 
 private val formatter = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
@@ -15,8 +16,18 @@ class TimeTracker(val routine: Routine = DefaultRoutine.Undefined()) {
         return formatter.parse(string)
     }
 
-    var passedTime = 0
+    var seconds = 0
         private set
+
+    fun passedTime() {
+         val begin = stringToDateTime(routine.start).time
+         val now = Date().time
+        println(Date(begin))
+        println(Date(now))
+        val diff = now - begin
+        println(TimeUnit.MILLISECONDS.toDays(diff))
+
+    }
 
     private var everySecond: Timer? = null
 
@@ -26,8 +37,8 @@ class TimeTracker(val routine: Routine = DefaultRoutine.Undefined()) {
             period = 1000L,
             daemon = false,
             action = {
-                passedTime++
-                println(passedTime)
+                seconds++
+                println(seconds)
             })
     }
 
@@ -35,8 +46,6 @@ class TimeTracker(val routine: Routine = DefaultRoutine.Undefined()) {
         everySecond?.cancel()
 
     }
-
-
 
 
     companion object {

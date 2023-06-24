@@ -16,7 +16,7 @@ sealed class DefaultRoutine : Routine {
     class GoneCame(context: Context) : DefaultRoutine() {
         override val that: String = context.getString(R.string.gone_come)
         override val start: String = TimeTracker.now
-        override val end: String = "not finished yet"
+        override val end: String? = null
     }
 
     class Undefined() : DefaultRoutine() {

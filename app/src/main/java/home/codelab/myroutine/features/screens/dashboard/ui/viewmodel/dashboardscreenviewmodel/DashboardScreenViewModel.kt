@@ -1,4 +1,4 @@
-package home.codelab.myroutine.features.screens.dashboard.ui.viewmodel
+package home.codelab.myroutine.features.screens.dashboard.ui.viewmodel.dashboardscreenviewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

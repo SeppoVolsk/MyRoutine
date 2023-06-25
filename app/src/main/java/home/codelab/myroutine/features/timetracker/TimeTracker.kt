@@ -19,13 +19,13 @@ class TimeTracker(val routine: Routine = DefaultRoutine.Undefined()) {
     var seconds = 0
         private set
 
-    fun passedTime() {
+    fun passedTime() : Long {
          val begin = stringToDateTime(routine.start).time
          val now = Date().time
         println(Date(begin))
         println(Date(now))
         val diff = now - begin
-        println(TimeUnit.MILLISECONDS.toDays(diff))
+        return TimeUnit.MILLISECONDS.toHours(diff)
 
     }
 

@@ -21,7 +21,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import home.codelab.myroutine.domain.routine.DefaultRoutine
 import home.codelab.myroutine.features.screens.dashboard.ui.routinestatecard.RoutineCard
-import home.codelab.myroutine.features.screens.dashboard.ui.viewmodel.DashboardScreenViewModel
+import home.codelab.myroutine.features.screens.dashboard.ui.viewmodel.dashboardscreenviewmodel.DashboardScreenViewModel
 import kotlinx.coroutines.launch
 
 

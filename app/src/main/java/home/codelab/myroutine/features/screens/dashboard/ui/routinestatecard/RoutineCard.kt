@@ -13,6 +13,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import home.codelab.myroutine.R
 import home.codelab.myroutine.domain.routine.Routine
+import home.codelab.myroutine.features.screens.dashboard.ui.tickerwidget.TickerWidget
 
 
 @Composable
@@ -31,7 +32,7 @@ fun RoutineCard(routine: Routine, modifier: Modifier = Modifier) {
 fun FinishedRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier.padding(dimensionResource(R.dimen.padding_medium)),
-        shape = MaterialTheme.shapes.small,
+        shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(R.dimen.elevation_small)
         ),
@@ -62,7 +63,7 @@ fun InProgressRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
             Text(":")
             Text(routine.start)
             Text(stringResource(R.string.threeDotsHorizontal))
-            Text("in progress")
+            TickerWidget(routine = routine)
         }
     }
 

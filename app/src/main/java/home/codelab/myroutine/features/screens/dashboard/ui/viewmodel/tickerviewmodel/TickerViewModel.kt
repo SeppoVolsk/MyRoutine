@@ -18,7 +18,7 @@ class TickerViewModel : ViewModel() {
         tracker.start()
         _state.update {
             TickerWidgetState(
-                seconds = tracker.seconds,
+                //seconds = tracker.seconds,
                 duration = tracker.passedTime().toString()
             )
         }

@@ -2,53 +2,38 @@ package home.codelab.myroutine.features.timetracker
 
 import home.codelab.myroutine.domain.routine.DefaultRoutine
 import home.codelab.myroutine.domain.routine.Routine
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Timer
-import java.util.concurrent.TimeUnit
-import kotlin.concurrent.timer
+import kotlin.time.Duration.Companion.milliseconds
 
-private val formatter = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+private val fullFormat = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+private val diffFormat = SimpleDateFormat("yyyy лет MM месяцев dd дней HH:mm:ss")
 
 class TimeTracker(val routine: Routine = DefaultRoutine.Undefined()) {
-
+    private val begin = stringToDateTime(routine.start).time
     private fun stringToDateTime(string: String): Date {
-        return formatter.parse(string)
+        return fullFormat.parse(string)
     }
 
-    var seconds = 0
-        private set
+    val everySecond: Flow<String> = flow {
+        while (true) {
+            delay(1000L)
+            emit(passedTime())
+        }
+    }
 
-    fun passedTime() : Long {
-         val begin = stringToDateTime(routine.start).time
-         val now = Date().time
-        println(Date(begin))
-        println(Date(now))
+    fun passedTime(): String {
+        val now = Date().time
         val diff = now - begin
-        return TimeUnit.MILLISECONDS.toHours(diff)
-
+        return diff.milliseconds.toComponents { days, hours, minutes, seconds, _ ->
+            "$days дн. $hours ч. $minutes мин. $seconds сек."
+        }
     }
-
-    private var everySecond: Timer? = null
-
-    fun start() {
-        everySecond = timer(
-            startAt = stringToDateTime(routine.start),
-            period = 1000L,
-            daemon = false,
-            action = {
-                seconds++
-                println(seconds)
-            })
-    }
-
-    fun stop() {
-        everySecond?.cancel()
-
-    }
-
 
     companion object {
-        val now: String = formatter.format(Date())
+        val now: String = fullFormat.format(Date())
     }
 }

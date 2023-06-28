@@ -12,9 +12,7 @@ class TimeTrackerTest {
     fun stringToDateTimeTest() {
         val tracker = TimeTracker()
         val dateTimeString = TimeTracker.now
-        // val dateTime = tracker.stringToDateTime(dateTimeString)
-        // val dateTimeToString = SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(dateTime)
-        // assertEquals(dateTimeString, dateTimeToString)
+
     }
 
     @Test
@@ -30,9 +28,5 @@ class TimeTrackerTest {
 
     }
 
-    @Test
-    fun passedTimeTest() {
-        val tracker = TimeTracker()
-        tracker.passedTime()
-    }
+
 }

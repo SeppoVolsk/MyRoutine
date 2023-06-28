@@ -1,6 +1,7 @@
 package home.codelab.myroutine.features.screens.dashboard.ui.routinestatecard
 
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -31,14 +32,14 @@ fun RoutineCard(routine: Routine, modifier: Modifier = Modifier) {
 @Composable
 fun FinishedRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
     Card(
-        modifier = modifier.padding(dimensionResource(R.dimen.padding_medium)),
+        modifier = modifier.padding(dimensionResource(R.dimen.padding_medium)).fillMaxWidth(),
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(R.dimen.elevation_small)
         ),
         colors = CardDefaults.elevatedCardColors(containerColor = colorResource(R.color.finished))
     ) {
-        Row(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
+        Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
             Text(routine.that)
             Text(":")
             Text(routine.start)
@@ -51,14 +52,14 @@ fun FinishedRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
 @Composable
 fun InProgressRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
     Card(
-        modifier = modifier.padding(dimensionResource(R.dimen.padding_medium)),
+        modifier = modifier.padding(dimensionResource(R.dimen.padding_medium)).fillMaxWidth(),
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(R.dimen.elevation_small)
         ),
         colors = CardDefaults.elevatedCardColors(containerColor = colorResource(R.color.in_progress))
     ) {
-        Row(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
+        Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
             Text(routine.that)
             Text(":")
             Text(routine.start)

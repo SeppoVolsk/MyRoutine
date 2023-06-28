@@ -5,6 +5,7 @@ import home.codelab.myroutine.domain.routine.Routine
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.takeWhile
 import java.text.SimpleDateFormat
 import java.util.Date
 import kotlin.time.Duration.Companion.milliseconds
@@ -18,14 +19,21 @@ class TimeTracker(val routine: Routine = DefaultRoutine.Undefined()) {
         return fullFormat.parse(string)
     }
 
+    var isWorking = true
+    fun stop() {
+        isWorking = false
+    }
+
     val everySecond: Flow<String> = flow {
         while (true) {
             delay(1000L)
             emit(passedTime())
+            println(isWorking)
         }
-    }
+    }.takeWhile { _ -> isWorking }
 
-    fun passedTime(): String {
+
+    private fun passedTime(): String {
         val now = Date().time
         val diff = now - begin
         return diff.milliseconds.toComponents { days, hours, minutes, seconds, _ ->

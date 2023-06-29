@@ -1,4 +1,4 @@
-package home.codelab.myroutine.features.timetracker
+package home.codelab.myroutine.data.timetracker
 
 import home.codelab.myroutine.domain.routine.DefaultRoutine
 import home.codelab.myroutine.domain.routine.Routine
@@ -28,7 +28,6 @@ class TimeTracker(val routine: Routine = DefaultRoutine.Undefined()) {
         while (true) {
             delay(1000L)
             emit(passedTime())
-            println(isWorking)
         }
     }.takeWhile { _ -> isWorking }
 

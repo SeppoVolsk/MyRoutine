@@ -3,6 +3,7 @@ package home.codelab.myroutine.features.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import home.codelab.myroutine.domain.routine.DefaultRoutine
 import home.codelab.myroutine.domain.routine.Routine
 
 @Entity
@@ -15,4 +16,13 @@ data class RoutineEntity(
     override val start: String = "undefined",
     @ColumnInfo(name = "end")
     override val end: String? = null,
-) : Routine
+) : Routine {
+    companion object {
+        fun fromAnyRoutine(routine: Routine): RoutineEntity {
+            return when (routine) {
+                is DefaultRoutine -> routine.toRoutineEntity()
+                else -> RoutineEntity()
+            }
+        }
+    }
+}

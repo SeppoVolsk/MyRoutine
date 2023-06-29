@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import home.codelab.myroutine.MyRoutineApplication
-import home.codelab.myroutine.domain.routine.DefaultRoutine
+import home.codelab.myroutine.domain.routine.Routine
 import home.codelab.myroutine.features.database.repository.RoutineRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -23,8 +23,12 @@ class DashboardScreenViewModel(private val routineRepository: RoutineRepository)
                 initialValue = DashboardScreenState()
             )
 
-    suspend fun addRoutine(routine: DefaultRoutine) {
+    suspend fun addRoutine(routine: Routine) {
         routineRepository.insert(routine)
+    }
+
+    suspend fun updateRoutine(routine: Routine) {
+        routineRepository.update(routine)
     }
 
     companion object {

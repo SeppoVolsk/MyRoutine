@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="arrowRight">\u21A6</string>
     <string name="originalOfHorizontal">\u22b6</string>
     <string name="threeDotsHorizontal">\u22ef</string>
     <string name="threeDotsVertical">\u22ee</string>
+    // Arrows
+    <string name="arrowRight">\u2192</string>
+    <string name="arrowDown">\u2193</string>
 </resources>

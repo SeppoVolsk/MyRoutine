@@ -32,7 +32,9 @@ fun RoutineCard(routine: Routine, modifier: Modifier = Modifier) {
 @Composable
 fun FinishedRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
     Card(
-        modifier = modifier.padding(dimensionResource(R.dimen.padding_medium)).fillMaxWidth(),
+        modifier = modifier
+            .padding(dimensionResource(R.dimen.padding_medium))
+            .fillMaxWidth(),
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(R.dimen.elevation_small)
@@ -41,9 +43,8 @@ fun FinishedRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
     ) {
         Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
             Text(routine.that)
-            Text(":")
             Text(routine.start)
-            Text(stringResource(R.string.threeDotsHorizontal))
+            Text(stringResource(R.string.arrowDown), style = MaterialTheme.typography.titleLarge)
             Text(routine.end ?: "")
         }
     }
@@ -52,7 +53,9 @@ fun FinishedRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
 @Composable
 fun InProgressRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
     Card(
-        modifier = modifier.padding(dimensionResource(R.dimen.padding_medium)).fillMaxWidth(),
+        modifier = modifier
+            .padding(dimensionResource(R.dimen.padding_medium))
+            .fillMaxWidth(),
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(R.dimen.elevation_small)
@@ -61,9 +64,8 @@ fun InProgressRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
     ) {
         Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
             Text(routine.that)
-            Text(":")
             Text(routine.start)
-            Text(stringResource(R.string.threeDotsHorizontal))
+            Text(stringResource(R.string.arrowDown), style = MaterialTheme.typography.titleLarge)
             TickerWidget(routine = routine)
         }
     }

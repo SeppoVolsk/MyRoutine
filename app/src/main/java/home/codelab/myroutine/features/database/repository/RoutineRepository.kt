@@ -1,6 +1,5 @@
 package home.codelab.myroutine.features.database.repository
 
-import home.codelab.myroutine.domain.routine.DefaultRoutine
 import home.codelab.myroutine.domain.routine.Routine
 import home.codelab.myroutine.features.database.dao.RoutineDao
 import home.codelab.myroutine.features.database.entity.RoutineEntity
@@ -9,18 +8,14 @@ import kotlinx.coroutines.flow.Flow
 class RoutineRepository(private val mainRoutineDao: RoutineDao) {
     fun allStream(): Flow<List<RoutineEntity>> = mainRoutineDao.all()
 
-    suspend fun  insert(routine: Routine) {
-        val routineEntity = when(routine) {
-            is DefaultRoutine -> routine.toRoutineEntity()
-            else -> RoutineEntity()
-        }
-        mainRoutineDao.insert(routineEntity)
+    suspend fun insert(routine: Routine) {
+        mainRoutineDao.insert(RoutineEntity.fromAnyRoutine(routine))
     }
 
-    suspend fun update(routineEntity: RoutineEntity) =
-        mainRoutineDao.update(routineEntity)
+    suspend fun update(routine: Routine) =
+        mainRoutineDao.update(RoutineEntity.fromAnyRoutine(routine))
 
-    suspend fun delete(routineEntity: RoutineEntity) =
-        mainRoutineDao.delete(routineEntity)
+    suspend fun delete(routine: Routine) =
+        mainRoutineDao.delete(RoutineEntity.fromAnyRoutine(routine))
 
 }

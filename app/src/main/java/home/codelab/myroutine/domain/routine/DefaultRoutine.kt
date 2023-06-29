@@ -3,8 +3,8 @@ package home.codelab.myroutine.domain.routine
 
 import android.content.Context
 import home.codelab.myroutine.R
+import home.codelab.myroutine.data.timetracker.TimeTracker
 import home.codelab.myroutine.features.database.entity.RoutineEntity
-import home.codelab.myroutine.features.timetracker.TimeTracker
 
 sealed class DefaultRoutine : Routine {
     fun toRoutineEntity() = RoutineEntity(

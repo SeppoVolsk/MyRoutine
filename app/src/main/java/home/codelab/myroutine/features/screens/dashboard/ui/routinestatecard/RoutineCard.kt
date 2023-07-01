@@ -13,12 +13,13 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import home.codelab.myroutine.R
-import home.codelab.myroutine.domain.routine.Routine
+import home.codelab.myroutine.features.database.entity.RoutineEntity
+import home.codelab.myroutine.features.screens.dashboard.ui.durationwidget.DurationWidget
 import home.codelab.myroutine.features.screens.dashboard.ui.tickerwidget.TickerWidget
 
 
 @Composable
-fun RoutineCard(routine: Routine, modifier: Modifier = Modifier) {
+fun RoutineCard(routine: RoutineEntity, modifier: Modifier = Modifier) {
     val isFinished = routine.end != null
     if (isFinished) {
         FinishedRoutineCard(routine)
@@ -30,7 +31,7 @@ fun RoutineCard(routine: Routine, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun FinishedRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
+fun FinishedRoutineCard(routine: RoutineEntity, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
             .padding(dimensionResource(R.dimen.padding_medium))
@@ -46,12 +47,13 @@ fun FinishedRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
             Text(routine.start)
             Text(stringResource(R.string.arrowDown), style = MaterialTheme.typography.titleLarge)
             Text(routine.end ?: "")
+            DurationWidget(routine = routine)
         }
     }
 }
 
 @Composable
-fun InProgressRoutineCard(routine: Routine, modifier: Modifier = Modifier) {
+fun InProgressRoutineCard(routine: RoutineEntity, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
             .padding(dimensionResource(R.dimen.padding_medium))

@@ -19,7 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
-import home.codelab.myroutine.domain.routine.DefaultRoutine
+import home.codelab.myroutine.R
+import home.codelab.myroutine.features.database.entity.RoutineEntity
 import home.codelab.myroutine.features.screens.dashboard.ui.routinestatecard.RoutineCard
 import home.codelab.myroutine.features.screens.dashboard.ui.viewmodel.dashboardscreenviewmodel.DashboardScreenViewModel
 import kotlinx.coroutines.launch
@@ -35,6 +36,7 @@ fun DashboardScreen(
     val state by viewModel.dashboardScreenState.collectAsState()
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
+    val defaultRoutineTitle = context.getString(R.string.gone_come)
     Scaffold(
         content = { padding ->
             LazyColumn(
@@ -56,7 +58,7 @@ fun DashboardScreen(
                 onClick = {
                     scope.launch {
                         viewModel.addRoutine(
-                            DefaultRoutine.GoneCame(context)
+                            RoutineEntity(that = defaultRoutineTitle)
                         )
                     }
                 }

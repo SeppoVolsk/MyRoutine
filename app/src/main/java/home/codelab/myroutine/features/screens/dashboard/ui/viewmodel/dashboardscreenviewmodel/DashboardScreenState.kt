@@ -1,5 +1,5 @@
 package home.codelab.myroutine.features.screens.dashboard.ui.viewmodel.dashboardscreenviewmodel
 
-import home.codelab.myroutine.domain.routine.Routine
+import home.codelab.myroutine.features.database.entity.RoutineEntity
 
-data class DashboardScreenState(val routineList: List<Routine> = listOf())
+data class DashboardScreenState(val routineList: List<RoutineEntity> = listOf())

@@ -20,7 +20,7 @@ class DefaultRoutineTest {
     fun toRoutineEntity() {
         val defaultRoutine = DefaultRoutine.GoneCame(context)
         assertEquals(
-            defaultRoutine.toRoutineEntity(),
+            defaultRoutine.toNewRoutineEntity(),
             RoutineEntity(
                 id = 0,
                 that = defaultRoutine.that,

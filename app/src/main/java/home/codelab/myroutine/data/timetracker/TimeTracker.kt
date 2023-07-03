@@ -1,27 +1,15 @@
 package home.codelab.myroutine.data.timetracker
 
+import home.codelab.myroutine.domain.extensions.fullFormat
+import home.codelab.myroutine.domain.extensions.toDateTime
 import home.codelab.myroutine.domain.routine.Routine
 import home.codelab.myroutine.features.database.entity.RoutineEntity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.takeWhile
-import java.text.ParseException
-import java.text.SimpleDateFormat
 import java.util.Date
 import kotlin.time.Duration.Companion.milliseconds
-
-
-private val fullFormat = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
-private val diffFormat = SimpleDateFormat("yyyy лет MM месяцев dd дней HH:mm:ss")
-fun String.toDateTime(): Date {
-    var date: Date = try {
-        fullFormat.parse(this)
-    } catch (error: ParseException) {
-        Date()
-    }
-    return date
-}
 
 abstract class TimeTracker(val routine: Routine) {
     private val begin = routine.start.toDateTime().time

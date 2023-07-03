@@ -43,9 +43,10 @@ fun FinishedRoutineCard(routine: RoutineEntity, modifier: Modifier = Modifier) {
         colors = CardDefaults.elevatedCardColors(containerColor = colorResource(R.color.finished))
     ) {
         Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
+            Text("#${routine.id}")
             Text(routine.that)
             Text(routine.start)
-            Text(stringResource(R.string.arrowDown), style = MaterialTheme.typography.titleLarge)
+            Text(stringResource(R.string.greenDone), style = MaterialTheme.typography.titleLarge)
             Text(routine.end ?: "")
             DurationWidget(routine = routine)
         }
@@ -65,6 +66,7 @@ fun InProgressRoutineCard(routine: RoutineEntity, modifier: Modifier = Modifier)
         colors = CardDefaults.elevatedCardColors(containerColor = colorResource(R.color.in_progress))
     ) {
         Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
+            Text("#${routine.id}")
             Text(routine.that)
             Text(routine.start)
             Text(stringResource(R.string.arrowDown), style = MaterialTheme.typography.titleLarge)

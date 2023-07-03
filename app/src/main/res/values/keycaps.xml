@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hashTag">\u0023\u20E3</string>
+    <string-array name="keyCaps">
+        <item>\u0030\u20E3</item>
+        <item>\u0031\u20E3</item>
+        <item>\u0032\u20E3</item>
+        <item>\u0033\u20E3</item>
+        <item>\u0034\u20E3</item>
+        <item>\u0035\u20E3</item>
+        <item>\u0036\u20E3</item>
+        <item>\u0037\u20E3</item>
+        <item>\u0038\u20E3</item>
+        <item>\u0039\u20E3</item>
+    </string-array>
+</resources>

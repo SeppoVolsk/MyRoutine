@@ -14,4 +14,6 @@
     // Triangle
     <string name="triangleRight">\u25b7</string>
     <string name="doubleTriangleRight">\u23e9</string>
+
+
 </resources>

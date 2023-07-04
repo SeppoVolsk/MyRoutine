@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // Routines that descriptions
+    <string name="gone_come">Пришёл-ушёл</string>
+
+    // Routines card colors
+    <color name="finished">#FF34ed6f</color>
+    <color name="in_progress">#FFED3434</color>
+</resources>
+

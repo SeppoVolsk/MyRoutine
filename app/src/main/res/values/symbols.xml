@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="originalOfHorizontal">\u22b6</string>
+    // Three dots
+    <string name="threeDotsHorizontal">\u22ef</string>
+    <string name="threeDotsVertical">\u22ee</string>
+    // Arrows
+    <string name="heavyArrowRight">\u2794</string>
+    <string name="heavyArrowRightV2">\u21e8</string>
+    <string name="arrowRight">\u2192</string>
+    <string name="arrowDown">\u2193</string>
+    // Checkboxes
+    <string name="greenDone">\u2705</string>
+    // Triangle
+    <string name="triangleRight">\u25b7</string>
+    <string name="doubleTriangleRight">\u23e9</string>
+
+
+</resources>
